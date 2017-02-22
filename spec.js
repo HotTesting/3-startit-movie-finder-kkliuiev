@@ -2,7 +2,7 @@ describe('Test Suite', () => {
     it('Test Case', () => {
         browser.get('')
         let searchField = $("input[name='searchStr']")
-        let searchRequest = 'The Lord'
+        let searchRequest = 'The Lord of the'
         searchField.sendKeys(searchRequest)
         element(by.buttonText('Go!')).click()
         browser.sleep(5000)
