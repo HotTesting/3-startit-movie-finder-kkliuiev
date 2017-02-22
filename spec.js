@@ -11,5 +11,13 @@ describe('Test Suite', () => {
         expect(title).toContain(searchRequest, 'First search result should contain search string')
 
     })
+    it('Test Case', () => {
+        browser.get('')
+        let searchTitle = 'Action'
+        element(by.linkText(searchTitle)).getText().click();
+        browser.sleep(15000);
+        let title = $('h3').getText()
+        expect(title).toContain(searchTitle, 'Wrong page is shown!!')
+    })
 
 })
