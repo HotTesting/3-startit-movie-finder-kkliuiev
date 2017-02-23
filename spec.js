@@ -1,10 +1,13 @@
 describe('Test Suite', () => {
-    let searchTitle = 'Action'
-    it('Test Case', () => {
+
+    let searchRequest = 'The Lord of the' // Applied in Search field test (Test Case01)
+    let searchTitle = 'Action' // Applied in Genre tests (Test Case02,Test Case03)
+    it('Test Case01', () => {
+
+        //Test for Search field
         browser.get('')
         let searchField = $("input[name='searchStr']")
-        let searchRequest = 'The Lord of the'
-        searchField.sendKeys(searchRequest)
+        searchField.sendKeys(searchRequest);
         element(by.buttonText('Go!')).click()
         browser.sleep(5000)
         let movieCard = $('movie-card')
@@ -12,15 +15,16 @@ describe('Test Suite', () => {
         expect(title).toContain(searchRequest, 'First search result should contain search string')
 
     })
-    it('Test Case', () => {
+    it('Test Case02', () => {
+        // Test for correct Genre redirection 
         browser.get('')
-            //let searchTitle = 'Action'
         element(by.linkText(searchTitle)).getText().click();
         browser.sleep(15000);
         let title = $('h3').getText()
         expect(title).toContain(searchTitle, 'Wrong page is shown!!')
     })
-    it('Test Case', () => {
+    it('Test Case03', () => {
+        // Text for correct Genre badge on Movie page
         browser.get('')
         element(by.linkText(searchTitle)).click();
         browser.sleep(5000);
