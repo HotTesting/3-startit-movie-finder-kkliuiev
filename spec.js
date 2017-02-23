@@ -1,4 +1,5 @@
 describe('Test Suite', () => {
+    let searchTitle = 'Action'
     it('Test Case', () => {
         browser.get('')
         let searchField = $("input[name='searchStr']")
@@ -13,11 +14,20 @@ describe('Test Suite', () => {
     })
     it('Test Case', () => {
         browser.get('')
-        let searchTitle = 'Action'
+            //let searchTitle = 'Action'
         element(by.linkText(searchTitle)).getText().click();
         browser.sleep(15000);
         let title = $('h3').getText()
         expect(title).toContain(searchTitle, 'Wrong page is shown!!')
+    })
+    it('Test Case', () => {
+        browser.get('')
+        element(by.linkText(searchTitle)).click();
+        browser.sleep(5000);
+        $('h4 a').click();
+        browser.sleep(5000);
+        let smallButton = element(by.className('label label-info m-r-md')).getText();
+        expect(smallButton).toContain(searchTitle, 'Wrong page is shown!!')
     })
 
 })
