@@ -1,6 +1,6 @@
 describe('Test Suite', () => {
 
-    let searchRequest = 'The Lord of the' // Applied in Search field test (Test Case01)
+    let searchRequest = 'Matrix' // Applied in Search field test (Test Case01)
     let searchTitle = 'Action' // Applied in Genre tests (Test Case02,Test Case03)
     it('Test Case01', () => {
 
@@ -9,7 +9,7 @@ describe('Test Suite', () => {
         let searchField = $("input[name='searchStr']")
         searchField.sendKeys(searchRequest);
         element(by.buttonText('Go!')).click()
-        browser.sleep(5000)
+        browser.sleep(5000);
         let movieCard = $('movie-card')
         let title = movieCard.$('h4 a').getText()
         expect(title).toContain(searchRequest, 'First search result should contain search string')
