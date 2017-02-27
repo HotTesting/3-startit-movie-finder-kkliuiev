@@ -11,8 +11,8 @@ describe('Test Suite', () => {
         searchField.sendKeys(searchRequest);
         element(by.buttonText('Go!')).click()
         browser.sleep(5000);
-        let movieCard = $('movie-card')
-        let title = movieCard.$('h4 a').getText()
+        let movieCard = $$('movie-card')
+        let title = movieCard.$$('h4 a').get(0).getText()
         expect(title).toContain(searchRequest, 'First search result should contain search string')
 
     })
@@ -32,7 +32,7 @@ describe('Test Suite', () => {
         $('h4 a').click();
         browser.sleep(5000);
         let smallButton = element(by.className('label label-info m-r-md')).getText();
-        expect(smallButton).toContain(searchTitle, 'Wrong page is shown!!')
+        expect(smallButton).toContain(searchGenre, 'Wrong page is shown!!')
     })
     it('Test Case04', () => {
 
