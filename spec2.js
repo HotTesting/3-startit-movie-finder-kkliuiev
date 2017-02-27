@@ -7,9 +7,11 @@ describe('Test Suite', () => {
         element(by.buttonText('Go!')).click();
         browser.sleep(5000);
         let allArray = $$('h3 + div').get(0);
-        let allText = allArray.$$("h4 a").getText();
-        allText.map(text => {
-        expect(text).toContain('Matrix','Search result contains wrong strings')
+        let allText = allArray.$$("h4 a").getText().then(texts=> {
+            texts.map(text=> {
+                expect(text).toContain('Matrix','Search result contains wrong strings')
+            })
+       
     });
 
 })
