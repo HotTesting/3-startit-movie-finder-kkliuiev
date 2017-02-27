@@ -8,7 +8,6 @@ describe('Test Suite', () => {
         browser.sleep(5000);
         let allArray = $$('h3 + div').get(0);
         let allText = allArray.$$("h4 a").getText();
-        expect(allText).toContain('Matrix');
         allText.map(text => {
         expect(text).toContain('Matrix','Search result contains wrong strings')
     });
