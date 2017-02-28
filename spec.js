@@ -39,12 +39,27 @@ describe('Test Suite', () => {
         //Test for Search field (Negative)
         browser.get('')
         let searchField = $("input[name='searchStr']")
-        searchField.sendKeys('lolooloolloollo');
+        searchField.sendKeys('lolool4444oolloollo');
         element(by.buttonText('Go!')).click()
         browser.sleep(5000);
         let searchResult = $$('h3 + div').get(0).$$('h4 a').getText().count()
         expect(searchResult).toBe(0, 'First search result should contain search string')
 
     })
+    it('Test Case05', () => {
+        browser.get('');
+        let searchField = $("input[name='searchStr']");
+        searchField.sendKeys(searchRequest);
+        element(by.buttonText('Go!')).click();
+        browser.sleep(5000);
+        let allArray = $$('h3 + div').get(0);
+        let allText = allArray.$$("h4 a").getText().then(texts=> {
+            texts.map(text=> {
+                expect(text).toContain(searchRequest,'Search result contains wrong strings')
+            })
+       
+    });
+
+})
 
 })

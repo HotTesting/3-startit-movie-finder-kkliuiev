@@ -1,5 +1,5 @@
 module.exports.config = {
-    specs: ['spec2.js'],
+    specs: ['spec.js'],
     directConnect: true,
     baseUrl: 'https://movies-finder.firebaseapp.com/'
 }
