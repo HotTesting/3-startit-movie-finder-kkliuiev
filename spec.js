@@ -1,7 +1,7 @@
 describe('Test Suite', () => {
 
     let searchRequest = 'Matrix' // Applied in Search field test (Test Case01)
-    let searchGenre = 'Action' // Applied in Genre tests (Test Case02,Test Case03)
+    let searchGenre = 'Crime' // Applied in Genre tests (Test Case02,Test Case03)
     let wrongText = 'lolooloolloollo' //Applied in Negative Search test case (Test Case 04)
     it('Test Case01', () => {
 
@@ -31,8 +31,8 @@ describe('Test Suite', () => {
         browser.sleep(5000);
         $('h4 a').click();
         browser.sleep(5000);
-        let smallButton = element(by.className('label label-info m-r-md')).getText();
-        expect(smallButton).toContain(searchGenre, 'Wrong page is shown!!')
+        let smallButtons = element.all(by.className('label label-info m-r-md')).getText();
+        expect(smallButtons).toContain(searchGenre, 'Wrong page is shown!!')
     })
     it('Test Case04', () => {
 
@@ -47,6 +47,7 @@ describe('Test Suite', () => {
 
     })
     it('Test Case05', () => {
+        //Test for Search field results (Will fail if result contains non relevant items)
         browser.get('');
         let searchField = $("input[name='searchStr']");
         searchField.sendKeys(searchRequest);
