@@ -4,7 +4,7 @@ module.exports.config = {
     baseUrl: 'https://movies-finder.firebaseapp.com/',
     onPrepare:() =>  {
         
-       let reporter = require('jasmine2-reporter')
-       jasmine.getEnv().addReporter(reporter);
+       let Jasmine2Reporter = require('jasmine2-reporter').Jasmine2Reporter
+        jasmine.getEnv().addReporter(new Jasmine2Reporter());
     }
 }
