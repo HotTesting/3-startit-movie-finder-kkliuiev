@@ -8,7 +8,9 @@ module.exports.config = {
         jasmine.getEnv().addReporter(new Jasmine2Reporter());
     },
     afterEach:()=> {
+    browser.get('/');    
     browser.executeScript('window.sessionStorage.clear();');
     browser.executeScript('window.localStorage.clear();');
+    browser.manage().deleteAllCookies();
 }
 }
