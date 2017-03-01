@@ -6,5 +6,9 @@ module.exports.config = {
         
        let Jasmine2Reporter = require('jasmine2-reporter').Jasmine2Reporter
         jasmine.getEnv().addReporter(new Jasmine2Reporter());
-    }
+    },
+    afterEach:()=> {
+    browser.executeScript('window.sessionStorage.clear();');
+    browser.executeScript('window.localStorage.clear();');
+}
 }
