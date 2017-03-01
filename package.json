@@ -8,6 +8,7 @@
     "test": "protractor"
   },
   "dependencies":{
-    "protractor": "^5.1.1"
+    "protractor": "^5.1.1",
+    "jasmine2-reporter":"^0.3.0"
   }
 }

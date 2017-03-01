@@ -1,6 +1,6 @@
 describe('Test Suite', () => {
 
-    let searchRequest = 'Matrix' // Applied in Search field test (Test Case01)
+    let searchRequest = 'matrix' // Applied in Search field test (Test Case01)
     let searchGenre = 'Crime' // Applied in Genre tests (Test Case02,Test Case03)
     let wrongText = 'lolooloolloollo' //Applied in Negative Search test case (Test Case 04)
     it('Test Case01', () => {
@@ -11,8 +11,8 @@ describe('Test Suite', () => {
         searchField.sendKeys(searchRequest);
         element(by.buttonText('Go!')).click()
         browser.sleep(5000);
-        let movieCard = $$('movie-card')
-        let title = movieCard.$$('h4 a').get(0).getText()
+        let movieCard = $$('movie-card').first()
+        let title = movieCard.$('h4 a').getText().then(text=>text.toLowerCase())
         expect(title).toContain(searchRequest, 'First search result should contain search string')
 
     })
@@ -56,7 +56,7 @@ describe('Test Suite', () => {
         let allArray = $$('h3 + div').get(0);
         let allText = allArray.$$("h4 a").getText().then(texts=> {
             texts.map(text=> {
-                expect(text).toContain(searchRequest,'Search result contains wrong strings')
+                expect(text.toLowerCase()).toContain(searchRequest,'Search result contains wrong strings')
             })
        
     });
