@@ -60,65 +60,61 @@ describe('Main page', () => {
             let title = $$('h3').getText()
             expect(title).toContain(searchGenre, 'Wrong page is shown!!')
         })
-        
-        let dataCollection = ["Action","Adventure","Animation","Comedy","Crime","Documentary","Drama","Family","Fantasy","History","Horror","Music","Mystery","Romance","Science Fiction","TV Movie","Thriller","War","Western"]
-    dataCollection.map(data=> {
-        
-        it(`should redirect to items with relevant badges for ${data} genre`, () => {
-            // Text for correct Genre badge on Movie page
+
+        let dataCollection = ["Action", "Adventure", "Animation", "Comedy", "Crime", "Documentary", "Drama", "Family", "Fantasy", "History", "Horror", "Music", "Mystery", "Romance", "Science Fiction", "TV Movie", "Thriller", "War", "Western"]
+        dataCollection.map(data => {
+
+            it(`should redirect to items with relevant badges for ${data} genre`, () => {
+                // Text for correct Genre badge on Movie page
+                browser.get('')
+                element(by.linkText(data)).click();
+                browser.sleep(5000);
+                $('h4 a').click();
+                browser.sleep(5000);
+                let badges = element.all(by.className('label label-info m-r-md')).getText();
+                expect(badges).toContain(data, 'Wrong page is shown!!')
+            })
+
+        })
+
+    })
+    describe('Movie Cards', () => {
+
+
+        it('should contain movie posters', () => {
             browser.get('')
-            element(by.linkText(data)).click();
-            browser.sleep(5000);
-            $('h4 a').click();
-            browser.sleep(5000);
-            let badges = element.all(by.className('label label-info m-r-md')).getText();
-            expect(badges).toContain(data, 'Wrong page is shown!!')
+            let i = 0;
+            let scopeOfImages = $$('h3 + div').$$('img').then(images => images.map(text => {
+                    console.log(i);
+                    i++;
+                    expect(text.isPresent()).toBe(true, 'First search result should contain search string')
+                })
+
+            )
         })
+        it('should contain movie titles', () => {
+            browser.get('')
+            let i = 0;
+            let scopeOfImages = $$('h3 + div').$$('img').then(images => images.map(text => {
+                    console.log(i);
+                    i++;
+                    expect(text.isPresent()).toBe(true, 'First search result should contain search string')
+                })
 
-    })
-
-})
-describe('Movie Cards', () => {
-
-
-    it('should contain images', () => {
-        browser.get('')
-        let movieCards = $$('movie-card')
-        let firstPic = movieCards.$$('div').then(divElements => {
-            divElements.map(divElement => {
-                divElement.$$('img').then(images => {
-                    images.map(image =>
-                        expect(image.isPresent()).toBe(true, 'No picture!')
-                    )
+            )
+        })
+        it('should contain movie rate badges', () => {
+            browser.get('')
+            let movieCards = $$('movie-card')
+            let firstPic = movieCards.$$('div').then(divElements => {
+                divElements.map(divElement => {
+                    divElement.$$('h4').then(rates => {
+                        rates.map(rate =>
+                            expect(rate.isPresent()).toBe(true, 'No rate badge!')
+                        )
+                    })
                 })
             })
         })
     })
-    it('should contain movie titles', () => {
-        browser.get('')
-        let movieCards = $$('movie-card')
-        let firstPic = movieCards.$$('div').then(divElements => {
-            divElements.map(divElement => {
-                divElement.$$('h4').then(titles => {
-                    titles.map(title =>
-                        expect(title.isPresent()).toBe(true, 'No movie title!')
-                    )
-                })
-            })
-        })
-    })
-    it('should contain movie rate badges', () => {
-        browser.get('')
-        let movieCards = $$('movie-card')
-        let firstPic = movieCards.$$('div').then(divElements => {
-            divElements.map(divElement => {
-                divElement.$$('h4').then(rates => {
-                    rates.map(rate =>
-                        expect(rate.isPresent()).toBe(true, 'No rate badge!')
-                    )
-                })
-            })
-        })
-    })
-})
 })
