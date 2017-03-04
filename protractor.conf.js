@@ -1,5 +1,5 @@
 module.exports.config = {
-    specs: ['spec4.js'],
+    specs: ['spec.js'],
     directConnect: true,
     baseUrl: 'https://movies-finder.firebaseapp.com/',
     onPrepare:() =>  {

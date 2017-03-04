@@ -57,7 +57,7 @@ describe('Main page', () => {
             browser.get('')
             element(by.linkText(searchGenre)).getText().click();
             browser.sleep(15000);
-            let title = $$('h3').getText()
+            let title = $$('h3').get(0).getText()
             expect(title).toContain(searchGenre, 'Wrong page is shown!!')
         })
 
@@ -92,29 +92,23 @@ describe('Main page', () => {
 
             )
         })
-        it('should contain movie titles', () => {
+        it('should contain movie images', () => {
             browser.get('')
             let i = 0;
-            let scopeOfImages = $$('h3 + div').$$('img').then(images => images.map(text => {
-                    console.log(i);
-                    i++;
-                    expect(text.isPresent()).toBe(true, 'First search result should contain search string')
-                })
-
-            )
+            let scopeOfImages = $$('h3 + div').$$('img').then(images => images.length)
+            expect(scopeOfImages).toBe(40, 'Some films has no images')
         })
-        it('should contain movie rate badges', () => {
+        it('should contain release dates', () => {
             browser.get('')
-            let movieCards = $$('movie-card')
-            let firstPic = movieCards.$$('div').then(divElements => {
-                divElements.map(divElement => {
-                    divElement.$$('h4').then(rates => {
-                        rates.map(rate =>
-                            expect(rate.isPresent()).toBe(true, 'No rate badge!')
-                        )
-                    })
-                })
-            })
+            let i = 0;
+            let scopeOfReleaseDates = $$('h3 + div').$$('div p:first-of-type').getText().then(dates => dates.length)
+            expect(scopeOfReleaseDates).toBe(40, 'Some films has no release dates')
+        })
+        it('should contain movie rates', () => {
+            browser.get('')
+            let i = 0;
+            let scopeOfRatesOnBadgess = $$('h3 + div').$$('div small').getText().then(badges => (badges.length))
+            expect(scopeOfRatesOnBadgess).toBe(40, 'First search result should contain search string')
         })
     })
 })
