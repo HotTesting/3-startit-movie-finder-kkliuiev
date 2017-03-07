@@ -79,19 +79,6 @@ describe('Main page', () => {
 
     })
     describe('Movie Cards', () => {
-
-
-        it('should contain movie posters', () => {
-            browser.get('')
-            let i = 0;
-            let scopeOfImages = $$('h3 + div').$$('img').then(images => images.map(text => {
-                    console.log(i);
-                    i++;
-                    expect(text.isPresent()).toBe(true, 'First search result should contain search string')
-                })
-
-            )
-        })
         it('should contain movie images', () => {
             browser.get('')
             let i = 0;
