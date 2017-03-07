@@ -2,13 +2,8 @@ describe('Test Suite', () => {
     it('should contain movie titles', () => {
         
         browser.get('')
-        let b = 0 
+       let scopeOfReleaseDates = await $$('h3 + div').$$('div p:first-of-type').getText().then(dates => dates.length)
+            expect(scopeOfReleaseDates).toBe(40, 'Some films has no release dates')
 
-        async function asyncAction() {
-        b =  await $$('h3 + div').$$("h4 a").getText().length
-        return b    
-    }
-    
-       expect(await $$('h3 + div').$$("h4 a").getText().length).toBe(110,"Bug Bug Bug")
     })
 })

@@ -79,6 +79,15 @@ describe('Main page', () => {
 
     })
     describe('Movie Cards', () => {
+
+         it('should contain movie titles', () => {
+        
+        browser.get('')
+       let scopeOfTitles = $$('h3 + div').$$('h4 a').getText().then(titles => titles.length)
+            expect(scopeOfTitles).toBe(40, 'Some films has no titles')
+
+        })
+       
         it('should contain movie images', () => {
             browser.get('')
             let i = 0;
