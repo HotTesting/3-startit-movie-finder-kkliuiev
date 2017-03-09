@@ -33,8 +33,7 @@ describe('Home Page', () => {
             homePage.open();
             homePage.searchForMovie(searchRequest);
             homePage.getSearchResults();
-            let searchResultsCount =  homePage.movieCards.getText().count()
-            console.log(searchResultsCount)
-            expect(0).toBe(0, 'First search result should not contain search string')
+            let searchResultsCount =  homePage.movieCards.$$('h4 a').count()
+            expect(searchResultsCount).toBe(0, 'First search result should not contain search string')
         })
 })

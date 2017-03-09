@@ -9,8 +9,7 @@ class HomePage extends AbstractPage {
         this.searchField = $("input[name='searchStr']")
         this.goButton = element(by.buttonText('Go!')) //Button to launch search
         this.genreList = $$('.collapse.navbar-collapse.movies-cat').$$('.list-group-item')
-        //this.movieCards = element(by.cssContainingText('movies div', 'Search Results')).$$('movie-card')
-        this.movieCards = $$('h3 + div').get(0).$$("h4 a")
+        this.movieCards = element(by.cssContainingText('movies div', 'Search Results')).$$('movie-card')
     }
 
     searchForMovie(searchRequest) {
