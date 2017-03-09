@@ -1,6 +1,8 @@
 class AbstractPage {
 
-    
+    constructor() {
+        this.URL = ''
+    }
     open() {
 
         browser.get(this.URL)
