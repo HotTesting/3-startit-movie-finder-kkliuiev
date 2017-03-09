@@ -1,5 +1,5 @@
 describe('Test Suite', () => {
-    it('should contain movie titles', () => {
+    it('should contain movie titles',async () => {
         
         browser.get('')
        let scopeOfReleaseDates = await $$('h3 + div').$$('div p:first-of-type').getText().then(dates => dates.length)
