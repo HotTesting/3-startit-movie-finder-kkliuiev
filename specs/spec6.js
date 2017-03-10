@@ -34,6 +34,6 @@ describe('Home Page', () => {
             homePage.searchForMovie('jjjjjjjjjjjjjjjj');
             //homePage.getSearchResults();
             let searchResultsCount =  homePage.movieCards.$$('h3 + div').get(0).$$('h4 a').count()
-            expect(searchResultsCount).toBe(10, 'First search result should not contain search string')
+            expect(searchResultsCount).toBe(0, 'First search result should not contain search string')
         })
 })
