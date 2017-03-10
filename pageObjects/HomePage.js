@@ -8,7 +8,7 @@ class HomePage extends AbstractPage {
 
         this.searchField = $("input[name='searchStr']")
         this.goButton = element(by.buttonText('Go!')) //Button to launch search
-        this.genreList = $$('.collapse.navbar-collapse.movies-cat').$$('.list-group-item')
+        this.genreList = $$('.collapse.navbar-collapse.movies-cat').$$('.list-group-item').getText()
         this.movieCards = element(by.cssContainingText('movies div', 'Search Results')).$$('movie-card')
     }
 
@@ -19,7 +19,7 @@ class HomePage extends AbstractPage {
 
     getSearchResults() {
         let waitForFirstMovieCard = protractor.ExpectedConditions.visibilityOf(this.movieCards.first())
-        browser.wait(waitForFirstMovieCard, 10000, 'First search result is not visible')
+        browser.wait(waitForFirstMovieCard, 1000, 'First search result is not visible').then(undefined, ()=> { } )
         return this.movieCards
     }
 
