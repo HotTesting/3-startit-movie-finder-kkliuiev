@@ -13,17 +13,19 @@ describe('Home Page', () => {
 
     it('Search string should search for inputted text in db', () => {
         homePage.open();
-        //homePage.waitTillPageOpen();
+        homePage.waitForResults();
         homePage.searchForMovie(searchRequest);
-        homePage.getSearchResults();
+        homePage.waitForResults();
+        homePage.getSearchResultsDisplayed();
         let movieTitle = homePage.movieCards.$$('h4 a').first().getText().then(text => text.toLowerCase())
                     expect(movieTitle).toContain(searchRequest, 'Search result contains wrong strings')
     })
 
-    xit('Search should give only relevant results', () => {
+    it('Search should give only relevant results', () => {
         homePage.open();
+        homePage.waitForResults();
         homePage.searchForMovie(searchRequest);
-        homePage.getSearchResults();
+        homePage.getSearchResultsDisplayed();
         let movieTitles = homePage.movieCards.$$('h4 a').getText().then(texts => {
                 texts.map(text => {
                     expect(text.toLowerCase()).toContain(searchRequest, 'Search result contains wrong strings')
@@ -31,22 +33,26 @@ describe('Home Page', () => {
 })
     })
     
-    xit('Search should show nothing if searched for non-existent', () => {
+    it('Search should show nothing if searched for non-existent', () => {
 
             homePage.open();
             homePage.searchForMovie('jjjjjjjjjjjjjjjj');
-            homePage.getSearchResults();
+            homePage.getSearchResultsDisplayed();
             let searchResultsCount =  homePage.movieCards.$$('h3 + div').get(0).$$('h4 a').count()
             expect(searchResultsCount).toBe(0, 'First search result should not contain search string')
         })
-     xit('Genre tab should redirect to relevant pages', () => {
+     it('Genre tab should redirect to relevant pages', () => {
             homePage.open()
-            //browser.sleep(15000);
-            //let a = homePage.genreList
-            //a.map(data => {console.log(data)})
-            // $$('.collapse.navbar-collapse.movies-cat').$$('.list-group-item').element(by.linkText(searchGenre)).first().click();
-            // homePage.waitTillPageOpen()
-            // let title = $$('h3').get(0).getText()
-            expect(20).toBe(20, 'Wrong page is shown!!')
-        })   
+            let a = homePage.genreList.getText().then(texts=>{texts.map(data => {
+                //browser.get('')
+                element(by.linkText(data)).click();
+                homePage.waitForResults();
+                $$('h4 a').first().click();
+                homePage.waitForResults();
+                $('h2').getText().then(title=>{console.log(title)})
+                homePage.waitForBadges();
+                let badges = element.all(by.className('label label-info m-r-md')).getText();
+                expect(badges).toContain(data, 'Wrong page is shown!!')})})
+        },200000)
+              
 })

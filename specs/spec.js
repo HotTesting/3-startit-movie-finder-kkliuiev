@@ -52,7 +52,7 @@ describe('Main page', () => {
     })
 
     describe('Genre redirection', () => {
-        it('should redirect to relevant records', () => {
+        xit('should redirect to relevant records', () => {
             // Test for correct Genre redirection 
             browser.get('')
             element(by.linkText(searchGenre)).getText().click();
@@ -64,7 +64,7 @@ describe('Main page', () => {
         let dataCollection = ["Action", "Adventure", "Animation", "Comedy", "Crime", "Documentary", "Drama", "Family", "Fantasy", "History", "Horror", "Music", "Mystery", "Romance", "Science Fiction", "TV Movie", "Thriller", "War", "Western"]
         dataCollection.map(data => {
 
-            it(`should redirect to items with relevant badges for ${data} genre`, () => {
+            xit(`should redirect to items with relevant badges for ${data} genre`, () => {
                 // Text for correct Genre badge on Movie page
                 browser.get('')
                 element(by.linkText(data)).click();
@@ -80,7 +80,7 @@ describe('Main page', () => {
     })
     describe('Movie Cards', () => {
 
-         it('should contain movie titles', () => {
+         xit('should contain movie titles', () => {
         
         browser.get('')
        let scopeOfTitles = $$('h3 + div').$$('h4 a').getText().then(titles => titles.length)
@@ -88,19 +88,19 @@ describe('Main page', () => {
 
         })
        
-        it('should contain movie images', () => {
+        xit('should contain movie images', () => {
             browser.get('')
             let i = 0;
             let scopeOfImages = $$('h3 + div').$$('img').then(images => images.length)
             expect(scopeOfImages).toBe(40, 'Some films has no images')
         })
-        it('should contain release dates', () => {
+        xit('should contain release dates', () => {
             browser.get('')
             let i = 0;
             let scopeOfReleaseDates = $$('h3 + div').$$('div p:first-of-type').getText().then(dates => dates.length)
             expect(scopeOfReleaseDates).toBe(40, 'Some films has no release dates')
         })
-        it('should contain movie rates', () => {
+        xit('should contain movie rates', () => {
             browser.get('')
             let i = 0;
             let scopeOfRatesOnBadgess = $$('h3 + div').$$('div small').getText().then(badges => (badges.length))
