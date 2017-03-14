@@ -4,12 +4,12 @@ describe('Main page', () => {
     let searchRequest = 'matrix' // Applied in Search field test (Test Case01)
     let searchGenre = 'Crime' // Applied in Genre tests (Test Case02,Test Case03)
     let wrongText = 'lolooloolloollo' //Applied in Negative Search test case (Test Case 04)
-    //Serch field tests   
+
+    //Group of search field tests   
 
     describe('Search field', () => {
         it('should search for inputted text in db', () => {
 
-            //Test for Search field
             browser.get('')
             let searchField = $("input[name='searchStr']")
             searchField.sendKeys(searchRequest);
@@ -23,7 +23,6 @@ describe('Main page', () => {
 
         it('should give only relevant results', () => {
 
-            //Test for Search field (Negative)
             browser.get('')
             let searchField = $("input[name='searchStr']")
             searchField.sendKeys('lolool4444oolloollo');
@@ -50,10 +49,9 @@ describe('Main page', () => {
         })
 
     })
-
+    //Group of Genre redirection tests
     describe('Genre redirection', () => {
         xit('should redirect to relevant records', () => {
-            // Test for correct Genre redirection 
             browser.get('')
             element(by.linkText(searchGenre)).getText().click();
             browser.sleep(15000);
@@ -65,7 +63,6 @@ describe('Main page', () => {
         dataCollection.map(data => {
 
             xit(`should redirect to items with relevant badges for ${data} genre`, () => {
-                // Text for correct Genre badge on Movie page
                 browser.get('')
                 element(by.linkText(data)).click();
                 browser.sleep(5000);
@@ -78,16 +75,16 @@ describe('Main page', () => {
         })
 
     })
+    //Group of moviecard's elements availability tests   
     describe('Movie Cards', () => {
 
-         xit('should contain movie titles', () => {
-        
-        browser.get('')
-       let scopeOfTitles = $$('h3 + div').$$('h4 a').getText().then(titles => titles.length)
+        xit('should contain movie titles', () => {
+            browser.get('')
+            let scopeOfTitles = $$('h3 + div').$$('h4 a').getText().then(titles => titles.length)
             expect(scopeOfTitles).toBe(40, 'Some films has no titles')
 
         })
-       
+
         xit('should contain movie images', () => {
             browser.get('')
             let i = 0;

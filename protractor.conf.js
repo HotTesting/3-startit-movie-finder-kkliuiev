@@ -1,5 +1,5 @@
 module.exports.config = {
-    specs: ['./specs/new_spec.js'],
+    specs: ['./specs/spec.js'],
     directConnect: true,
     //SELENIUM_PROMISE_MANAGER: false,
     baseUrl: 'https://movies-finder.firebaseapp.com/',
@@ -9,6 +9,7 @@ module.exports.config = {
         jasmine.getEnv().addReporter(new Jasmine2Reporter());
     },
     afterEach:()=> {
+    // Cleaning and resetting
     browser.get('/');    
     browser.executeScript('window.sessionStorage.clear();');
     browser.executeScript('window.localStorage.clear();');
