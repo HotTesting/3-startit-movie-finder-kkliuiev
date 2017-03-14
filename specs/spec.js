@@ -1,13 +1,15 @@
 let HomePage = require('../pageObjects/HomePage.js').HomePage //HomePage class usage
+//let ActorPage = require('./pageObjects/ActorPage.js').ActorPage
 
 describe('Home Page', () => { 
 
     let homePage // homePage variable
+    //let actorPage
     let searchRequest = 'matrix' // Applied in Search field test (Test Case01)
 
     beforeEach(() => {
-        homePage = new HomePage(); // New homePage object declaring
-
+       homePage = new HomePage(); // New homePage object declaring
+       //actorPage = new ActorPage()
     })
 // Simple test for Search String usage, just search and compare first search result to inputted text
     xit('Search string should search for inputted text in db', () => {
@@ -126,6 +128,14 @@ describe('Home Page', () => {
             })
         })
     }, 100000)
+  
+   
+     it('actorPage', () => {
+         let i   
+    for (i=0;i<1000;i++) {
+        browser.get('/actor/'+i)
+        console.log(i)
+        
+        expect(true).toBe(true, 'Some films has no movie rates')}},1000000)
     
-
 })
