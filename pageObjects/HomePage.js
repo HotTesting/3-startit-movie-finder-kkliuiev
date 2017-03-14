@@ -26,28 +26,6 @@ class HomePage extends AbstractPage {
         browser.wait(waitForFirstMovieCard, 500, 'First search result is not visible')
     }
 
-    // with returning Promise object 
-    // searchForMovie(searchRequest) {
-    //     this.searchField.sendKeys(searchRequest)
-    //     this.goButton.click()
-
-    //     return browser.wait($('movie_card').isPresent(), 5000)
-    // }
-
-
-    // search with default wait or custom wait
-    // searchForMovie(searchRequest, waitForResults) {
-    //     this.searchField.sendKeys(searchRequest)
-    //     this.goButton.click()
-
-    //     if (waitForResults == undefined) {
-    //         browser.sleep(5000)
-    //     } else {
-    //         waitForResults()
-    //     }
-    // }
-
-
 }
 
 module.exports.HomePage = HomePage

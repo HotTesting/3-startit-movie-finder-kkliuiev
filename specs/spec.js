@@ -10,7 +10,7 @@ describe('Home Page', () => {
 
     })
 // Simple test for Search String usage, just search and compare first search result to inputted text
-    it('Search string should search for inputted text in db', () => {
+    xit('Search string should search for inputted text in db', () => {
         homePage.open();
         homePage.waitForResults();
         homePage.searchForMovie(searchRequest);
@@ -21,7 +21,7 @@ describe('Home Page', () => {
     })
 
 // Itteration through all array of search results titles
-    it('Search should give only relevant results', () => {
+    xit('Search should give only relevant results', () => {
         homePage.open();
         homePage.waitForResults();
         homePage.searchForMovie(searchRequest);
@@ -34,7 +34,7 @@ describe('Home Page', () => {
     })
 
 // Negative test, search for non-existent should result 0
-    it('Search should show nothing if searched for non-existent', () => {
+    xit('Search should show nothing if searched for non-existent', () => {
 
         homePage.open();
         homePage.searchForMovie('jjjjjjjjjjjjjjjj');
@@ -44,7 +44,7 @@ describe('Home Page', () => {
     })
 
  // Genre redirection test, itterating through array of Genres   
-    it('Genre tab should redirect to relevant pages', () => {
+    xit('Genre tab should redirect to relevant pages', () => {
         homePage.open()
         let a = homePage.genreList.getText().then(texts => {
             texts.map(data => {
@@ -63,7 +63,7 @@ describe('Home Page', () => {
     }, 200000)
 
 //Test for Movie Cards contents. Each of the Movie Cards should contain movie titles. Itterating through array of Genres
-    it('Movie Cards should contain movie titles', () => {
+    xit('Movie Cards should contain movie titles', () => {
         homePage.open()
         let a = homePage.genreList.getText().then(texts => {
             texts.map(data => {
@@ -80,7 +80,7 @@ describe('Home Page', () => {
     }, 100000)
 
 //Test for Movie Cards contents. Each of the Movie Cards should contain movie images. Itterating through array of Genres
-    it('Movie Cards should contain movie images', () => {
+    xit('Movie Cards should contain movie images', () => {
         homePage.open()
         let a = homePage.genreList.getText().then(texts => {
             texts.map(data => {
@@ -96,7 +96,7 @@ describe('Home Page', () => {
     }, 100000)
 
 //Test for Movie Cards contents. Each of the Movie Cards should contain release dates. Itterating through array of Genres
-    it('Movie Cards should contain release dates', () => {
+    xit('Movie Cards should contain release dates', () => {
         homePage.open()
         let a = homePage.genreList.getText().then(texts => {
             texts.map(data => {
@@ -112,7 +112,7 @@ describe('Home Page', () => {
     }, 100000)
 
 //Test for Movie Cards contents. Each of the Movie Cards should contain movie rates. Itterating through array of Genres
-    it('Movie Cards should contain movie rates', () => {
+    xit('Movie Cards should contain movie rates', () => {
         homePage.open()
         let a = homePage.genreList.getText().then(texts => {
             texts.map(data => {
@@ -126,5 +126,6 @@ describe('Home Page', () => {
             })
         })
     }, 100000)
+    
 
 })
