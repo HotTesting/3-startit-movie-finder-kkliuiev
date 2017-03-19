@@ -7,8 +7,11 @@
     "postinstall": "webdriver-manager update",
     "test": "protractor"
   },
-  "dependencies":{
+  "dependencies": {
     "protractor": "^5.1.1",
-    "jasmine2-reporter":"^0.3.0"
+    "jasmine2-reporter": "^0.3.0"
+  },
+  "devDependencies": {
+    "protractor-jasmine2-html-reporter": "0.0.7"
   }
 }
