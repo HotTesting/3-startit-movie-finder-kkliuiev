@@ -132,10 +132,9 @@ describe('Home Page', () => {
    
      it('actorPage', () => {
          let i   
-    for (i=0;i<1000;i++) {
+    for (i=0;i<10;i++) {
         browser.get('/actor/'+i)
-        console.log(i)
-        
-        expect(true).toBe(true, 'Some films has no movie rates')}},1000000)
+        let actorTile = $$('actor-app')
+        expect(actorTile.count()).toBe(1, 'Some films has no movie rates')}},1000000)
     
 })
