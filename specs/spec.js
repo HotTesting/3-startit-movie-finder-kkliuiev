@@ -1,15 +1,15 @@
 let HomePage = require('../pageObjects/HomePage.js').HomePage //HomePage class usage
 
-describe('Home Page', () => { 
+describe('Home Page', () => {
 
     let homePage // homePage variable
     let searchRequest = 'matrix' // Applied in Search field test (Test Case01)
 
     beforeEach(() => {
-        homePage = new HomePage(); // New homePage object declaring
+            homePage = new HomePage(); // New homePage object declaring
 
-    })
-// Simple test for Search String usage, just search and compare first search result to inputted text
+        })
+        // Simple test for Search String usage, just search and compare first search result to inputted text
     it('Search string should search for inputted text in db', () => {
         homePage.open();
         homePage.waitForResults();
@@ -20,7 +20,7 @@ describe('Home Page', () => {
         expect(movieTitle).toContain(searchRequest, 'Search result contains wrong strings')
     })
 
-// Itteration through all array of search results titles
+    // Itteration through all array of search results titles
     it('Search should give only relevant results', () => {
         homePage.open();
         homePage.waitForResults();
@@ -33,7 +33,7 @@ describe('Home Page', () => {
         })
     })
 
-// Negative test, search for non-existent should result 0
+    // Negative test, search for non-existent should result 0
     it('Search should show nothing if searched for non-existent', () => {
 
         homePage.open();
@@ -43,7 +43,7 @@ describe('Home Page', () => {
         expect(searchResultsCount).toBe(0, 'First search result should not contain search string')
     })
 
- // Genre redirection test, itterating through array of Genres   
+    // Genre redirection test, itterating through array of Genres   
     it('Genre tab should redirect to relevant pages', () => {
         homePage.open()
         let a = homePage.genreList.getText().then(texts => {
@@ -53,8 +53,8 @@ describe('Home Page', () => {
                 $$('h4 a').first().click();
                 homePage.waitForResults();
                 $$('h2').get(0).getText().then(title => {
-                    console.log('Checking ' + title + ' page')
-                }) //This adds onscreen logs
+                        console.log('Checking ' + title + ' page')
+                    }) //This adds onscreen logs
                 homePage.waitForBadges();
                 let badges = element.all(by.className('label label-info m-r-md')).getText();
                 expect(badges).toContain(data, 'Wrong page is shown!!')
@@ -62,7 +62,7 @@ describe('Home Page', () => {
         })
     }, 200000)
 
-//Test for Movie Cards contents. Each of the Movie Cards should contain movie titles. Itterating through array of Genres
+    //Test for Movie Cards contents. Each of the Movie Cards should contain movie titles. Itterating through array of Genres
     it('Movie Cards should contain movie titles', () => {
         homePage.open()
         let a = homePage.genreList.getText().then(texts => {
@@ -70,8 +70,8 @@ describe('Home Page', () => {
                 element(by.linkText(data)).click();
                 homePage.waitForResults();
                 $$('h3').get(0).getText().then(title => {
-                    console.log('Checking ' + title + ' page for titles...')
-                }) //This adds onscreen logs
+                        console.log('Checking ' + title + ' page for titles...')
+                    }) //This adds onscreen logs
                 let scopeOfTitles = $$('h3 + div').$$('h4 a').getText().then(titles => titles.length)
                 expect(scopeOfTitles).toBe(20, 'Some films has no titles')
             })
@@ -79,7 +79,7 @@ describe('Home Page', () => {
 
     }, 100000)
 
-//Test for Movie Cards contents. Each of the Movie Cards should contain movie images. Itterating through array of Genres
+    //Test for Movie Cards contents. Each of the Movie Cards should contain movie images. Itterating through array of Genres
     it('Movie Cards should contain movie images', () => {
         homePage.open()
         let a = homePage.genreList.getText().then(texts => {
@@ -87,15 +87,15 @@ describe('Home Page', () => {
                 element(by.linkText(data)).click();
                 homePage.waitForResults();
                 $$('h3').get(0).getText().then(title => {
-                    console.log('Checking ' + title + ' page for movie images...')
-                }) //This adds onscreen logs
+                        console.log('Checking ' + title + ' page for movie images...')
+                    }) //This adds onscreen logs
                 let scopeOfImages = $$('h3 + div').$$('img').then(images => images.length)
                 expect(scopeOfImages).toBe(20, 'Some films has no images')
             })
         })
     }, 100000)
 
-//Test for Movie Cards contents. Each of the Movie Cards should contain release dates. Itterating through array of Genres
+    //Test for Movie Cards contents. Each of the Movie Cards should contain release dates. Itterating through array of Genres
     it('Movie Cards should contain release dates', () => {
         homePage.open()
         let a = homePage.genreList.getText().then(texts => {
@@ -103,15 +103,15 @@ describe('Home Page', () => {
                 element(by.linkText(data)).click();
                 homePage.waitForResults();
                 $$('h3').get(0).getText().then(title => {
-                    console.log('Checking ' + title + ' page for release dates...')
-                }) //This adds onscreen logs
+                        console.log('Checking ' + title + ' page for release dates...')
+                    }) //This adds onscreen logs
                 let scopeOfReleaseDates = $$('h3 + div').$$('div p:first-of-type').getText().then(dates => dates.length)
                 expect(scopeOfReleaseDates).toBe(20, 'Some films has no release dates')
             })
         })
     }, 100000)
 
-//Test for Movie Cards contents. Each of the Movie Cards should contain movie rates. Itterating through array of Genres
+    //Test for Movie Cards contents. Each of the Movie Cards should contain movie rates. Itterating through array of Genres
     it('Movie Cards should contain movie rates', () => {
         homePage.open()
         let a = homePage.genreList.getText().then(texts => {
@@ -119,8 +119,8 @@ describe('Home Page', () => {
                 element(by.linkText(data)).click();
                 homePage.waitForResults();
                 $$('h3').get(0).getText().then(title => {
-                    console.log('Checking ' + title + ' page for movie rates...')
-                }) //This adds onscreen logs
+                        console.log('Checking ' + title + ' page for movie rates...')
+                    }) //This adds onscreen logs
                 let scopeOfRatesOnBadgess = $$('h3 + div').$$('div small').getText().then(badges => (badges.length))
                 expect(scopeOfRatesOnBadgess).toBe(20, 'Some films has no movie rates')
             })
