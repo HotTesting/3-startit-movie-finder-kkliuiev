@@ -126,5 +126,21 @@ describe('Home Page', () => {
             })
         })
     }, 100000)
+    it('Search for an films on actor page', () => {
+        let i
+        let FilmName
+        let ActorName
+        for (i = 0; i < 3; i++) {
+            homePage.open()
+            $$('a[href*="movie"]').get(i).click()
+            browser.sleep(5000)
+            FilmName = $$('h2').get(0).getText()
+            ActorName = $$('h6').$$('a').get(0).getText()
+            $$('a[href*="actor"]').get(0).click()
+            browser.sleep(5000)
+            let allTitles = $$('h4 a').getText()
+            expect(allTitles).toContain(FilmName, 'Some films are not displayed')
+        }
+    })
 
 })
