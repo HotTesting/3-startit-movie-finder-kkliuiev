@@ -1,5 +1,5 @@
 module.exports.config = {
-    specs: ['./specs/spec.js'],
+    specs: ['./specs/actors_page.js'],
     directConnect: true,
     //SELENIUM_PROMISE_MANAGER: false,
     baseUrl: 'https://movies-finder.firebaseapp.com/',
