@@ -1,9 +1,9 @@
 module.exports.config = {
-    specs: ['./specs/spec2.js'],
+    specs: ['./specs/spec.js'],
     directConnect: true,
     //SELENIUM_PROMISE_MANAGER: false,
-    baseUrl:'https://dev.kasa.vareger.com/',
-    //baseUrl: 'https://movies-finder.firebaseapp.com/',
+    //baseUrl:'https://dev.kasa.vareger.com/',
+    baseUrl: 'https://movies-finder.firebaseapp.com/',
     onPrepare:() =>  {
     // let Jasmine2HtmlReporter = require('protractor-jasmine2-html-reporter');
     // jasmine.getEnv().addReporter(

@@ -31,6 +31,6 @@ describe('Kasa.in.ua', () => {
 
         expect($('.col-sm-12').$$('.text-bold').get(0).getText()).toContain('Вітаємо!')}
      }
-     ,50000)
+     ,150000)
 }
 )
