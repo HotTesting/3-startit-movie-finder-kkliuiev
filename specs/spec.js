@@ -25,7 +25,6 @@ describe('Home Page', () => {
         let i
         let FilmName
         let ActorName
-        let FilmNameClean
         for (i = 0; i < 2; i++) {
             homePage.open()
             homePage.waitTillMovieCards(100000)
@@ -33,13 +32,14 @@ describe('Home Page', () => {
             homePage.waitTillThumbnails(10000)
             let FilmName = $$('h2').get(0).getText()
             let FilmRate = $$('small').get(0).getText()
+            let FilmNameClean
             protractor.promise.all([FilmName, FilmRate]).then(results => {
                     let longname = results[0]
                     let rate = results[1]
                     let rateLength = rate.length
                     FilmNameClean = longname.slice(0, -rateLength)
                     console.log(FilmNameClean)
-                    return FilmNameClean
+                        //return FilmNameClean
                 })
                 //let FilmNameClean = FilmName.slice(0, -(FilmName.length - 3)).then(console.log)
             let ActorName = $$('h6').$$('a').get(0).getText()
@@ -47,8 +47,10 @@ describe('Home Page', () => {
             browser.sleep(5000)
             let allTitles = $$('h4 a').getText()
             expect(allTitles).toContain(FilmNameClean, 'Some films has no movie rates')
+
         }
     }, 1000000)
+
 
 
 })
