@@ -1,4 +1,5 @@
 node_modules
+target
 .DS_store
 debug.log
 specs/.DS_store
