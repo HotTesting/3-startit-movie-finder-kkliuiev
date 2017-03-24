@@ -3,3 +3,6 @@ target
 .DS_store
 debug.log
 specs/.DS_store
+target/screenshots/htmlReport.html
+
+target/screenshots/screenshots/2727cb7523e5e37098223dd05455ae21.png
